@@ -67,3 +67,10 @@ F. Introduce new features (fraction of time child is sick etc.. be creative), an
 
 65%
 
+# Note:
+
++ You can only consider different medical histories for the same patient id
++ Use a bank of classifiers, and tune their hyperparameters
++ Add new features that are function of the data
++ See `code_snippets` folder to see helpful hints (and how to read a file with unequal number of columns)
+
