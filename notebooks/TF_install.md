@@ -27,6 +27,18 @@ pip install tensorflow
 pip install tensorflow-gpu
 ```
 
+ Then we have to obtain the models folder for tensorflow.
+ For some reason, the release of tensorflow for python3.6
+ doesn't come with the folder (for python2.7, it does.)
+```
+$ git clone https://github.com/tensorflow/models.git 
+```
+get the location of the tensorflow package
+ pip3 show tensorflow
+ The command above will show installation information for the package.
+ Go to the location part, it shows where pip3 put the package.
+
+
 The remaining libraries can be installed on Ubuntu 16.04 using via apt-get:
 
 ``` bash
