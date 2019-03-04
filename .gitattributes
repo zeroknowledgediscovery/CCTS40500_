@@ -1,0 +1,8 @@
+notebooks/data_st/mneg2 filter=lfs diff=lfs merge=lfs -text
+notebooks/data_st/mneg filter=lfs diff=lfs merge=lfs -text
+notebooks/data_st/mneg1 filter=lfs diff=lfs merge=lfs -text
+notebooks/data_st/mpos filter=lfs diff=lfs merge=lfs -text
+notebooks/data_st/mpos1 filter=lfs diff=lfs merge=lfs -text
+notebooks/data_st/mpos2 filter=lfs diff=lfs merge=lfs -text
+notebooks/data_st/fpos* filter=lfs diff=lfs merge=lfs -text
+notebooks/data_st/fneg* filter=lfs diff=lfs merge=lfs -text
