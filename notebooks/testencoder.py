@@ -66,7 +66,7 @@ def plot_results(models,
 
     encoder, decoder = models
     x_test, y_test = data
-    os.makedirs(model_name, exist_ok=True)
+    os.makedirs(model_name)
 
     filename = os.path.join(model_name, "vae_mean.png")
     # display a 2D plot of the digit classes in the latent space
@@ -80,7 +80,7 @@ def plot_results(models,
     plt.savefig(filename)
     plt.show()
 
-    filename = os.path.join(model_name, "digits_over_latent.png")
+    filename = os.path.join(model_name, "digits_over_latent1.png")
     # display a 30x30 2D manifold of digits
     n = 30
     digit_size = 28
