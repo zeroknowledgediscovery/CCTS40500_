@@ -1,0 +1,1518 @@
+\documentclass[xcolor={dvipsnames,svgnames,x11names},8pt]{beamer}%{cssconf}%%{myACCart}
+\usepackage{etex}
+\usepackage{beamerthemesplit}
+\usepackage[all,color]{xy}
+\usepackage{colortbl}
+\usetheme{Madrid}
+\usecolortheme[named=black]{structure}
+% \usecolortheme[named=SlateGray]{structure}
+\usecolortheme{dove}
+% \usecolortheme{beaver}
+% \usecolortheme{wolverine}
+% \useoutertheme{shadow}
+% \setbeamercovered{transparent}
+\usefonttheme[onlysmall]{serif}
+\usefonttheme{professionalfonts}
+\usepackage{animate}
+\usepackage{here} 
+\usepackage[sans]{dsfont}
+\usepackage{yfonts}
+\usepackage{mathrsfs}
+\usepackage{pifont}
+\usepackage[varg]{pxfonts}
+\usepackage{ifthen}
+\usepackage{array}
+% \usepackage{psfrag}
+% \usepackage{pst-all} 
+\usepackage{rotating}
+\usepackage{stmaryrd}
+\usepackage{wasysym}
+\usepackage{ifsym}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{defn}{Definition}[section]
+\newtheorem{notn}{Note}[section] 
+\newtheorem{rem}{Remark}[section]
+\newcommand{\dis}{\mathbb{Q}} 
+\newcommand{\dinf}{\mathbb{W}}
+\newcommand{\disa}{\widetilde{\met}}
+\newcommand{\spa}{\mathscr{A}}
+\newcommand{\spp}{\mathscr{P}}
+\newcommand{\HA}{\mathbb{H}}
+\newcommand{\JJ}{ \mathscr{U}}
+\newcommand{\pti}{\mathds{G}}
+\newcommand{\sync}{ \varotimes }
+\newcommand{\eqp}{ \vartheta }
+\newcommand{\apo}{\overrightarrow{ \sync  }}
+\newcommand{\Bs}{$\mathfrak{B}_\Sigma \mspace{3mu} $}
+\newcommand{\pr}{\textrm{\sffamily \textsc{Prod}}}
+\newcommand{\Bl}{$\mathcal{B}_\Sigma$}
+\newcommand{\base}[1]{\llbracket #1 \rrbracket}
+\newcommand{\p}{\textfrak{p}}
+\newcommand{\X}{\mathbbmtt{X}}
+\newcommand{\Y}{\mathbbmtt{Y}}
+\newcommand{\Nr}{{\mathcal{N}} }
+\newcommand{\noN}{\mspace{3mu}\Nr_\p \mspace{-18mu}\big \vert \mspace{18mu}}
+\newcommand{\ms}{\mathbb{S}_\p^\Sigma}
+\newcommand{\nst}{\textrm{\sffamily\textsc{Numstates}}}
+\newcommand{\Rc}{\textrm{\sffamily\textsc{Rch}}}
+\newcommand{\Crd}{\textrm{\sffamily\textsc{Card}}}
+\newcommand{\cnd}{\textrm{\sffamily\textsc{Child}}}
+\newcommand{\del}{\textrm{\sffamily\textsc{Del\_Node}}}
+\newcommand{\trn}{\textrm{\sffamily\textsc{Tran}}}
+\newcommand{\ask}{\textrm{\sffamily \large ? }}
+\newcommand{\ind}{{\mathcal{T}}}
+\newcommand{\etal}{\textit{et} \mspace{3mu} \textit{al.}}
+\newcommand{\Pt}{\texttt{PATROL}}
+\newcommand{\Th}{\texttt{INTRUDER}}
+\newcommand{\sL}{\mathscr{L}}
+\newcommand{\Cpti}{\mathscr{G}}
+\newcommand{\muren}{\boldsymbol{\mu^{ren}}(\theta)}
+\newcommand{\Green}{\color{Green}}
+\newcommand{\Mblue}{\color{MidnightBlue}}
+\newcommand{\Nblue}{\color{NavyBlue}}
+\newcommand{\Dblue}{\color{NavyBlue}}
+\newcommand{\Dgreen}{\color{PineGreen}}
+\newcommand{\DGreen}{\color{PineGreen}} 
+\newcommand{\BRed}{\color{red}}
+\newcommand{\DRed}{\color{IndianRed3}}
+\newcommand{\DDRed}{\color{Red4}}
+\newcommand{\sts}{\boldsymbol{\widetilde{\oplus}}}
+\newcommand{\Sn}{\textrm{\sffamily\textsc{Sink}}}
+\newcommand{\pitilde}{\widetilde{\pi}}
+\newcommand{\Pitilde}{\widetilde{\Pi}}
+\newcommand{\bvec}{\vartheta}
+\newcommand{\algo}{\textrm{\bf\texttt{GenESeSS} }}
+\newcommand{\xalgo}{\textrm{\bf\texttt{XgenESeSS} }}
+
+\newcommand{\BOXcol}[4]{\setbeamercolor{uppercol}{fg=#1,bg=#2}\setbeamercolor{lowercol}{fg=#3,bg=#4}}
+\newcommand{\HNDreset}{ \setbeamercolor{uppercol}{fg=black,bg=LightGrey}%
+  \setbeamercolor{lowercol}{fg=Black,bg=GhostWhite}}
+\newcommand{\HND}{ \setbeamercolor{uppercol}{fg=black,bg=LightGrey}%
+  \setbeamercolor{lowercol}{fg=Black,bg=Honeydew}}
+\newcommand{\HNDl}{ \setbeamercolor{uppercol}{fg=White,bg=AliceBlue}%
+  \setbeamercolor{lowercol}{fg=Black,bg=Honeydew}}
+\renewcommand{\and}{\textrm{\sffamily\textsc{and}}}
+\setbeamercolor{uppercol}{fg=DarkBlue,bg=Black}%
+\setbeamercolor{lowercol}{fg=black,bg=white}
+\newcommand{\BOX}[2]{\begin{beamerboxesrounded}[upper=uppercol,lower=lowercol,shadow=true]{  \sffamily #1 }  \footnotesize
+    #2 \end{beamerboxesrounded} }
+\newcommand{\myar}{\ar@[|(1.5)]}
+\newcommand{\myarL}{\ar@[|(1.15)]}
+\newcommand{\myarT}{\ar@[|(2.5)]}
+\newcommand{\entropy}[1]{\boldsymbol{h}\left ( #1 \right )}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}%
+% \newcommand{\algo}{\bf genESeSS}
+% \usepackage{ulem}
+% \beamertemplategridbackground[2cm]
+%%% ----------------------------------------------------------------------
+\newcommand{\MAINCOL}{LightGray}
+\newcommand{\colWH}{\color{blue}}
+\newcommand{\logotitle}[1]{\frametitle{
+    { \small\bf \sffamily{\colWH #1}}
+    % \hfill
+    % % \begin{animateinline}[autoplay,loop]{4}
+    % %   \newframe{\bf N}
+    % %   \newframe{\bf R}
+    % %   \newframe{\bf S}
+    % %   \newframe{\bf L}
+    % % \end{animateinline}
+    % \animategraphics[autoplay,loop,width=.2in]{4}{Figures/NRSL}{1}{4}
+    % \end{minipage}
+    % 
+  }}
+\setbeamertemplate{headline}{}
+
+\def\LOGO{uc2}
+\def\BACKG{background}
+
+\renewcommand{\logotitle}[2]{\frametitle{%
+    \begin{minipage}{.6in}\vspace{2pt}\hspace{-10pt}
+      \includegraphics[width=.65in]{Logo/\LOGO}\vspace{2pt}
+    \end{minipage}\hfill
+    \begin{minipage}{3.85in}\centering
+      \vspace{5pt}{\color{Red1!70} \bf \normalfont {#1}}
+      \vskip .2em
+      {\color{black} \rule{3.65in}{.1pt}}
+      \vskip .1em
+      \small \color{gray} \sffamily #2
+    \end{minipage}\vspace{2pt}
+  }\setbeamertemplate{headline}{}
+}
+\newcommand{\logosubtitle}[1]{\framesubtitle{\color{DodgerBlue4}#1}}
+\title{ }
+\author[I. Chattopadhyay]{ Ishanu Chattopadhyay}
+\date{} 
+\institute{Department Of Mechanical  Engineering} % END INSTITUTE
+\boldmath
+%%% ----------------------------------------------------------------------
+%%% ----------------------------------------------------------------------
+\newcommand\BackgroundPicture[3]{%
+  \setbeamertemplate{\BACKG}{%
+    \parbox[c][\paperheight]{\paperwidth}{%
+      \vfill \hfill
+      \includegraphics[width=#2\paperwidth,height=#3\paperheight]{#1}
+      \hfill \vfill
+    }}}
+\newcommand{\figfont}{\sffamily\fontsize{8}{9}\selectfont}
+\usepackage{tikz}
+\usetikzlibrary{shapes,calc}
+\usetikzlibrary{shadows,fadings,spy}
+\usetikzlibrary{arrows,decorations.pathreplacing,snakes, patterns}
+\usepackage{pgfplots}
+\usepgfplotslibrary{external}
+\tikzexternalize[prefix=./Figures/External-L/]% activate externalization!
+\usetikzlibrary{mindmap,trees,backgrounds,chains,automata,arrows,positioning}
+\usetikzlibrary{pgfplots.dateplot}
+\usetikzlibrary{calc}
+\usepackage{rotating}
+\usetikzlibrary{fit}
+\usetikzlibrary{chains,backgrounds}
+\usetikzlibrary{intersections}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{colormaps}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.markings}
+%\usepackage{paralist}
+\usepackage{xstring}
+\usepackage{mathtools}
+\usepackage[final]{pdfpages}
+\usepackage[utf8]{inputenc}
+
+\tikzexternaldisable
+%% ## Equation Space Control---------------------------
+% #######################
+\newcommand{\cgather}[2][0pt]{\begingroup\setlength\abovedisplayskip{#1}\setlength\belowdisplayskip{#1}\begin{gather} #2 \end{gather}\endgroup}
+\newcommand{\cgathers}[2][0pt]{\begingroup\setlength\abovedisplayskip{#1}\setlength\belowdisplayskip{#1}\begin{gather*} #2 \end{gather*}\endgroup}
+\makeatletter
+\def\cgatherd{%
+  \@ifnextchar[%
+  {\cgatherd@i}
+  {\cgatherd@i[4pt]}%
+}
+\def\cgatherd@i[#1]{%
+  \@ifnextchar[%
+  {\cgatherd@ii{#1}}
+  {\cgatherd@ii{#1}[4pt]}%
+}
+\def\cgatherd@ii#1[#2]#3{%
+  % Do stuff
+  \begingroup\setlength\abovedisplayskip{#1}\setlength\belowdisplayskip{#2}\begin{gather*} #3 \end{gather*}\endgroup}
+\makeatother
+\newcommand{\calign}[2][0pt]{\begingroup\setlength\abovedisplayskip{#1}\setlength\belowdisplayskip{#1}\begin{align} #2 \end{align}\endgroup}
+\newcommand{\caligns}[2][0pt]{\begingroup\setlength\abovedisplayskip{#1}\setlength\belowdisplayskip{#1}\begin{align*} #2 \end{align*}\endgroup}
+\newcommand{\calignsP}[3][0pt]{\begin{spreadlines}{#2}\begingroup\setlength\abovedisplayskip{#1}\setlength\belowdisplayskip{#1}\begin{align*} #3 \end{align*}\endgroup\end{spreadlines}}
+\newcommand{\mnp}[2]{\begin{minipage}{#1}#2\end{minipage}} 
+\newcommand{\cgathersX}[3][Green1]{\begingroup\setlength\abovedisplayskip{10pt}\setlength\belowdisplayskip{10pt}\color{#1}\begin{gather*} #3 \end{gather*}\endgroup\color{#2}}
+
+% #######################
+\small
+\BOXcol{DarkSlateGray}{LightGray}{Black}{GhostWhite}
+\newboolean{ANIMATE}
+\setboolean{ANIMATE}{false}
+\newboolean{USEPS}
+\setboolean{USEPS}{false}
+% 
+% 
+\newcommand{\END}{\end{document}}
+% ####################################
+% \input{Figures/tikzcommoncode.tex}
+\definecolor{blcol}{RGB}{150,150,250}
+\definecolor{murcol}{RGB}{255,150,150}
+\definecolor{healcol}{RGB}{150,235,150}
+\definecolor{colzeta}{RGB}{250,250,200}
+\definecolor{leftpcol}{RGB}{200,255,200}
+\definecolor{rightpcol}{RGB}{200,200,255}
+\definecolor{boxcol}{RGB}{210,200,200}
+\definecolor{linecol}{RGB}{200,180,180}
+\definecolor{colplus}{RGB}{235,220,220}
+\definecolor{colinv}{RGB}{200,220,255}
+\definecolor{cof}{RGB}{219,144,71}
+\definecolor{pur}{RGB}{200,200,200}
+\definecolor{greeo}{RGB}{91,173,69}
+\definecolor{greet}{RGB}{52,111,72}
+\definecolor{nodecol}{RGB}{180,180,220}
+\definecolor{nodeedge}{RGB}{240,248,255}
+\definecolor{nodecolb}{RGB}{220,180,180}
+\definecolor{nodecolc}{RGB}{180,220,180}
+\definecolor{nodecolcD}{RGB}{100,160,100}
+\definecolor{nodecolW}{RGB}{190,190,190}
+\definecolor{edgecol}{RGB}{160,160,180}
+\definecolor{nodecolD}{RGB}{140,140,180}
+\definecolor{nodecolbD}{RGB}{180,140,140}
+% ##########################################################
+% ##########################################################
+\tikzset{oplus/.style={path picture={% 
+      \draw[black]
+      (path picture bounding box.south) -- (path picture bounding box.north) 
+      (path picture bounding box.west) -- (path picture bounding box.east);
+    }}} 
+% ##########################################################
+% ##########################################################
+\tikzset{%
+  highlight/.style={draw=Red4,rectangle,rounded corners=1pt, opacity=1,fill=gray!10,thick,inner sep=-1.25pt,on background layer,fill opacity=.3}
+}
+\tikzset{%
+  highlightg/.style={draw=DodgerBlue4,rectangle,rounded corners=1pt, opacity=1,fill=gray!10,thick,inner sep=-1.25pt,on background layer,fill opacity=.3}
+}
+% 
+\tikzset{%
+  fshadow/.style={      preaction={
+      fill=black,opacity=.1,
+      path fading=circle with fuzzy edge 20 percent,
+      transform canvas={xshift=1mm,yshift=-1mm}
+    }}
+}
+% ##########################################################
+% ##########################################################
+% \input{tape.tex}
+
+\newif\ifblackandwhitecycle
+\gdef\patternnumber{0}
+
+\pgfkeys{/tikz/.cd,
+  zoombox paths/.style={
+    draw=orange,
+    very thick
+  },
+  black and white/.is choice,
+  black and white/.default=static,
+  black and white/static/.style={ 
+    draw=white,   
+    zoombox paths/.append style={
+      draw=white,
+      postaction={
+        draw=black,
+        loosely dashed
+      }
+    }
+  },
+  black and white/static/.code={
+    \gdef\patternnumber{1}
+  },
+  black and white/cycle/.code={
+    \blackandwhitecycletrue
+    \gdef\patternnumber{1}
+  },
+  black and white pattern/.is choice,
+  black and white pattern/0/.style={},
+  black and white pattern/1/.style={    
+    draw=white,
+    postaction={
+      draw=black,
+      dash pattern=on 2pt off 2pt
+    }
+  },
+  black and white pattern/2/.style={    
+    draw=white,
+    postaction={
+      draw=black,
+      dash pattern=on 4pt off 4pt
+    }
+  },
+  black and white pattern/3/.style={    
+    draw=white,
+    postaction={
+      draw=black,
+      dash pattern=on 4pt off 4pt on 1pt off 4pt
+    }
+  },
+  black and white pattern/4/.style={    
+    draw=white,
+    postaction={
+      draw=black,
+      dash pattern=on 4pt off 2pt on 2 pt off 2pt on 2 pt off 2pt
+    }
+  },
+  zoomboxarray inner gap/.initial=5pt,
+  zoomboxarray columns/.initial=2,
+  zoomboxarray rows/.initial=2,
+  subfigurename/.initial={},
+  figurename/.initial={zoombox},
+  zoomboxarray/.style={
+    execute at begin picture={
+      \begin{scope}[
+        spy using outlines={%
+          zoombox paths,
+          width=\imagewidth / \pgfkeysvalueof{/tikz/zoomboxarray columns} - (\pgfkeysvalueof{/tikz/zoomboxarray columns} - 1) / \pgfkeysvalueof{/tikz/zoomboxarray columns} * \pgfkeysvalueof{/tikz/zoomboxarray inner gap} -\pgflinewidth,
+          height=\imageheight / \pgfkeysvalueof{/tikz/zoomboxarray rows} - (\pgfkeysvalueof{/tikz/zoomboxarray rows} - 1) / \pgfkeysvalueof{/tikz/zoomboxarray rows} * \pgfkeysvalueof{/tikz/zoomboxarray inner gap}-\pgflinewidth,
+          magnification=3,
+          every spy on node/.style={
+            zoombox paths
+          },
+          every spy in node/.style={
+            zoombox paths
+          }
+        }
+        ]
+      },
+      execute at end picture={
+      \end{scope}
+      % \node at (image.north) [anchor=north,inner sep=0pt] {\subcaptionbox{\label{\pgfkeysvalueof{/tikz/figurename}-image}}{\phantomimage}};
+      % \node at (zoomboxes container.north) [anchor=north,inner sep=0pt] {\subcaptionbox{\label{\pgfkeysvalueof{/tikz/figurename}-zoom}}{\phantomimage}};
+      \gdef\patternnumber{0}
+    },
+    spymargin/.initial=0.5em,
+    zoomboxes xshift/.initial=1,
+    zoomboxes right/.code=\pgfkeys{/tikz/zoomboxes xshift=1},
+    zoomboxes left/.code=\pgfkeys{/tikz/zoomboxes xshift=-1},
+    zoomboxes yshift/.initial=0,
+    zoomboxes above/.code={
+      \pgfkeys{/tikz/zoomboxes yshift=1},
+      \pgfkeys{/tikz/zoomboxes xshift=0}
+    },
+    zoomboxes below/.code={
+      \pgfkeys{/tikz/zoomboxes yshift=-1},
+      \pgfkeys{/tikz/zoomboxes xshift=0}
+    },
+    caption margin/.initial=4ex,
+  },
+  adjust caption spacing/.code={},
+  image container/.style={
+    inner sep=0pt,
+    at=(image.north),
+    anchor=north,
+    adjust caption spacing
+  },
+  zoomboxes container/.style={
+    inner sep=0pt,
+    at=(image.north),
+    anchor=north,
+    name=zoomboxes container,
+    xshift=\pgfkeysvalueof{/tikz/zoomboxes xshift}*(\imagewidth+\pgfkeysvalueof{/tikz/spymargin}),
+    yshift=\pgfkeysvalueof{/tikz/zoomboxes yshift}*(\imageheight+\pgfkeysvalueof{/tikz/spymargin}+\pgfkeysvalueof{/tikz/caption margin}),
+    adjust caption spacing
+  },
+  calculate dimensions/.code={
+    \pgfpointdiff{\pgfpointanchor{image}{south west} }{\pgfpointanchor{image}{north east} }
+    \pgfgetlastxy{\imagewidth}{\imageheight}
+    \global\let\imagewidth=\imagewidth
+    \global\let\imageheight=\imageheight
+    \gdef\columncount{1}
+    \gdef\rowcount{1}
+    \gdef\zoomboxcount{1}
+  },
+  image node/.style={
+    inner sep=0pt,
+    name=image,
+    anchor=south west,
+    append after command={
+      [calculate dimensions]
+      node [image container,subfigurename=\pgfkeysvalueof{/tikz/figurename}-image] {\phantomimage}
+      node [zoomboxes container,subfigurename=\pgfkeysvalueof{/tikz/figurename}-zoom] {\phantomimage}
+    }
+  },
+  color code/.style={
+    zoombox paths/.append style={draw=#1}
+  },
+  connect zoomboxes/.style={
+    spy connection path={\draw[draw=none,zoombox paths] (tikzspyonnode) -- (tikzspyinnode);}
+  },
+  help grid code/.code={
+    \begin{scope}[
+      x={(image.south east)},
+      y={(image.north west)},
+      font=\footnotesize,
+      help lines,
+      overlay
+      ]
+      \foreach \x in {0,1,...,9} { 
+        \draw(\x/10,0) -- (\x/10,1);
+        \node [anchor=north] at (\x/10,0) {0.\x};
+      }
+      \foreach \y in {0,1,...,9} {
+        \draw(0,\y/10) -- (1,\y/10);                        \node [anchor=east] at (0,\y/10) {0.\y};
+      }
+    \end{scope}    
+  },
+  help grid/.style={
+    append after command={
+      [help grid code]
+    }
+  },
+}
+% #############################################################
+\gdef\ITEM{\item[$\color{Tomato}\medbullet$]}
+%\gdef\ITEM{\item[$\color{Green2}\medbullet$]}
+% #############################################################
+
+\newcommand{\ntikz}[2][fill=none]{
+  \begin{tikzpicture}[font=\sffamily\fontsize{8}{8}\selectfont, text=white]
+    \node [ draw=lightgray, inner sep=8pt, #1] {
+      \mnp{4in}{
+        #2
+      }};
+  \end{tikzpicture}
+}
+% #############################################################
+
+\newcommand{\ntikza}[3][2in]{
+  \begin{tikzpicture}[font=\sffamily\fontsize{8}{8}\selectfont, text=white]
+    \node [ draw=lightgray, inner sep=8pt, fill=black, path fading=fade out, text=Green2, #2] {
+      \mnp{#1}{
+        #3
+      }};
+  \end{tikzpicture}
+}
+% #############################################################
+\newcommand{\BLACKBOX}{
+  \begin{tikzpicture}[,font=\bf\fontsize{8}{8}\selectfont,->,>=latex',shorten >=1pt,auto,node distance=1.2cm,  scale=.5 ,]
+    \draw [fill=lightgray,draw=white,opacity=.45, xslant=0.0,yslant=.4, path fading=east] (0,0) -- (1.5,0) -- (1.5,2.5) -- (0,2.5) -- cycle;  
+    \draw [xshift=-.8in,yshift=.275in,fill=lightgray,draw=white,opacity=.45, xslant=0.0,yslant=-.35, path fading=west] (0,0) -- (2,0) -- (2,2.5) -- (0,2.5) -- cycle;  
+    \draw [xshift=-.635in,yshift=1.225in,fill=lightgray,draw=white,opacity=1, xslant=2.45,yslant=-.19, path fading=west] (0,0) -- (3,0) -- (3,.5) -- (0,.5) -- cycle; 
+  \end{tikzpicture}
+}
+% #############################################################
+
+\newcommand\phantomimage{%
+  \phantom{%
+    \rule{\imagewidth}{\imageheight}%
+  }%
+}
+\newcommand\zoombox[2][]{
+  \begin{scope}[zoombox paths]
+    \pgfmathsetmacro\xpos{
+      (\columncount-1)*(\imagewidth / \pgfkeysvalueof{/tikz/zoomboxarray columns} + \pgfkeysvalueof{/tikz/zoomboxarray inner gap} / \pgfkeysvalueof{/tikz/zoomboxarray columns} ) + \pgflinewidth
+    }
+    \pgfmathsetmacro\ypos{
+      (\rowcount-1)*( \imageheight / \pgfkeysvalueof{/tikz/zoomboxarray rows} + \pgfkeysvalueof{/tikz/zoomboxarray inner gap} / \pgfkeysvalueof{/tikz/zoomboxarray rows} ) + 0.5*\pgflinewidth
+    }
+    \edef\dospy{\noexpand\spy [
+      #1,
+      zoombox paths/.append style={
+        black and white pattern=\patternnumber
+      },
+      every spy on node/.append style={#1},
+      x=\imagewidth,
+      y=\imageheight
+      ] on (#2) in node [anchor=north west] at ($(zoomboxes container.north west)+(\xpos pt,-\ypos pt)$);}
+    \dospy
+    \pgfmathtruncatemacro\pgfmathresult{ifthenelse(\columncount==\pgfkeysvalueof{/tikz/zoomboxarray columns},\rowcount+1,\rowcount)}
+    \global\let\rowcount=\pgfmathresult
+    \pgfmathtruncatemacro\pgfmathresult{ifthenelse(\columncount==\pgfkeysvalueof{/tikz/zoomboxarray columns},1,\columncount+1)}
+    \global\let\columncount=\pgfmathresult
+    \ifblackandwhitecycle
+    \pgfmathtruncatemacro{\newpatternnumber}{\patternnumber+1}
+    \global\edef\patternnumber{\newpatternnumber}
+    \fi
+  \end{scope}
+}
+
+
+
+\input pdf-trans
+\font\f=qx-lmr10    at 60pt
+\newbox\qbox
+
+\def\outline#1{%
+  \setbox\qbox\hbox{\f #1}%
+  \boxgs{1 Tr 0.7  g}{}\copy\qbox
+}%
+\pagestyle{empty}
+\parindent=0pt
+% ####################################
+% \setbeamercolor{background canvas}{bg=black}
+\setbeamertemplate{headline}{}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{Figures/\BACKG}}
+\tikzfading[name=fade out,
+inner color=transparent!0,
+outer color=transparent!100]
+
+
+
+
+% #############################################################
+\newcommand{\drawpfsa}{\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.75,font=\bf\fontsize{8}{8}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=black,text=black,minimum size=4, text width=2,scale=1]
+    \node[state, fill=nodecolA, draw=bcolA] (A)         []           {$\mspace{-4mu}q_1$};
+    \node[state, fill=nodecolB, draw=bcolB]         (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \path (A) edge   [thick,draw=edgecolAB,bend left]           node {$1\vert 0.3$} (B)
+    (A) edge [thick,draw=edgecolAA,in=120,out=60,loop,above] node {$0\vert 0.7$} (A)
+    (B) edge [thick,draw=edgecolBB,in=60,out=120,loop,above] node {$0\vert 0.1$} (B)
+    edge   [thick,draw=edgecolBA,bend left]           node {$1\vert 0.9$} (A);
+  \end{tikzpicture}}
+% #############################################################
+
+\newsavebox\Gtwostate
+\sbox{\Gtwostate}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=DodgerBlue3,draw=nodeedge,text=white,minimum size=3, text width=2,scale=1,fshadow, opacity=.5, text opacity=1]
+    \node[state] (A)         [, text=white]           {$\mspace{-6mu}q_1$};
+    \node[state]         (B) [right of=A, text=white] {$\mspace{-6mu}q_2$};
+    \path (A) edge   [draw=edgecol,bend left, text=white]           node[text=white] {$\sigma_1\vert 0.7$} (B)
+    (A) edge [draw=edgecol,in=120,out=60,loop,above, text=white] node[text=white] {$\sigma_0\vert 0.3$} (A)
+    (B) edge [draw=edgecol,in=60,out=120,loop,above, text=white] node[text=white] {$\sigma_1\vert 0.9$} (B)
+    edge   [draw=edgecol,bend left, text=white]           node [text=white] {$\sigma_0\vert 0.1$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+\newsavebox\Gfourstate
+\sbox{\Gfourstate}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=Red1,draw=nodeedge,text=white,minimum size=3, text width=2,scale=1,fshadow, opacity=.5, text opacity=1]
+    \node[state, text=white] (A)         []           {$\mspace{-6mu}q_1$};
+    \node[state, text=white]         (B) [right of=A] {$\mspace{-6mu}q_2$};
+    \node[state, text=white]         (C) [below of=B] {$\mspace{-6mu}q_3$};
+    \node[state, text=white]         (D) [below of=A] {$\mspace{-6mu}q_4$};
+    \path 
+    (A) edge   [draw=edgecol,bend left]           node [text=white]{$\sigma_1\vert 0.7$} (B)
+    (B) edge   [draw=edgecol,bend left, below]           node [rotate=90, text=white] {$\sigma_1\vert 0.7$} (C)
+    (C) edge   [draw=edgecol,bend left]           node[text=white] {$\sigma_0\vert 0.7$} (D)
+    (D) edge   [draw=edgecol,bend left,above]           node [rotate=90, text=white]{$\sigma_0\vert 0.7$} (A)
+    (A) edge [draw=edgecol,in=170,out=120,loop,above] node [xshift=.075in, text=white]{$\sigma_0\vert 0.3$} (A)
+    (C) edge [draw=edgecol,in=-10,out=-60,loop,right] node [yshift=0.05in, text=white]{$\sigma_1\vert 0.9$} (C)
+    (D)    edge   [draw=edgecol,bend left, below]           node [rotate=45, xshift=.0in, yshift=0.025in, text=white]{$\sigma_1\vert 0.1$} (B)        (B)    edge   [draw=edgecol,bend left,above]           node[rotate=45, xshift=0in, yshift=-.05in, text=white] {$\sigma_0\vert 0.1$} (D);
+  \end{tikzpicture}
+}
+% ##################################
+% ##################################
+\newcommand{\nodefillcol}{none}
+\newcommand{\edgedcol}{lightgray}
+\newcommand{\GfourstateCOMM}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=\nodefillcol,draw=nodeedge,thick,text=white,minimum size=12, text width=2,scale=1,fshadow, opacity=.5, text opacity=1]
+    \node[state, text=white] (A)         []           {$\mspace{-6mu}q_1$};
+    \node[state, text=white]         (B) [right of=A] {$\mspace{-6mu}q_2$};
+    \node[state, text=white]         (C) [below of=B] {$\mspace{-6mu}q_3$};
+    \node[state, text=white]         (D) [below of=A] {$\mspace{-6mu}q_4$};
+    \path 
+    (A) edge   [draw=\edgedcol,bend left]           node [text=white,yshift=0.05in]{$\sigma_1\vert 0.7$} (B)
+    (B) edge   [draw=\edgedcol,bend left, below]           node [rotate=90, text=white,yshift=-0.05in] {$\sigma_1\vert 0.7$} (C)
+    (C) edge   [draw=\edgedcol,bend left]           node[text=white,yshift=-0.05in] {$\sigma_0\vert 0.7$} (D)
+    (D) edge   [draw=\edgedcol,bend left,above]           node [rotate=90, text=white,yshift=0.05in]{$\sigma_0\vert 0.7$} (A)
+    (A) edge [draw=\edgedcol,in=170,out=120,loop,above] node [xshift=.075in, text=white,yshift=0.05in]{$\sigma_0\vert 0.3$} (A)
+    (C) edge [draw=\edgedcol,in=-10,out=-60,loop,right] node [yshift=0.05in, text=white,xshift=0.05in]{$\sigma_1\vert 0.9$} (C)
+    (D)    edge   [draw=\edgedcol,bend left, below]           node [rotate=45, xshift=.0in, yshift=-0.025in, text=white]{$\sigma_1\vert 0.1$} (B)        (B)    edge   [draw=\edgedcol,bend left,above]           node[rotate=45, xshift=0in, yshift=-.095in, text=white] {$\sigma_0\vert 0.1$} (D);
+  \end{tikzpicture}
+}
+% ##################################
+\newsavebox\FWN
+\sbox{\FWN}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecolW,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \node[state] (A)         []           {$\mspace{-4mu}q_1$};
+    \path  (A) edge [draw=edgecol,in=120,out=60,loop,above] node [text=white]{$\sigma_0\vert 0.5$} (A)
+    (A) edge [draw=edgecol,in=-120,out=-60,loop,below] node [text=white]{$\sigma_1\vert 0.5$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+% ##################################
+\newsavebox\Gone
+\sbox{\Gone}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state] (A)         []           {$\mspace{-4mu}q_1$};
+    \node[state]         (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \path (A) edge   [draw=edgecol,bend left]           node {$\sigma_1\vert 0.7$} (B)
+    (A) edge [draw=edgecol,in=120,out=60,loop,above] node {$\sigma_0\vert 0.3$} (A)
+    (B) edge [draw=edgecol,in=60,out=120,loop,above] node {$\sigma_1\vert 0.9$} (B)
+    edge   [draw=edgecol,bend left]           node {$\sigma_0\vert 0.1$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+\newsavebox\Gtwo
+\sbox{\Gtwo}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=.5cm,
+    semithick,scale=.34,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state] (A) at (0,0)         {$\mspace{-4mu}q_1$};
+    \node[state] at (3.3,1.9) (B)  {$\mspace{-4mu}q_2$};
+    \node[state] at (3.3,-1.9) (C)  {$\mspace{-4mu}q_3$};
+    \path (A) edge [draw=edgecol,bend left=45, pos=0.8] node [rotate=40, yshift=2]{$\sigma_1\vert 0.2$} (B)
+    (A) edge [draw=edgecol,bend left=15, below left,  pos=0.7] node [rotate=-30, yshift=1, xshift=9]{$\sigma_0\vert 0.8$} (C)
+    (B) edge [draw=edgecol,bend left=45, pos=0.1] node [rotate=-90, yshift=1, xshift=-4]{$\sigma_1\vert 0.3$} (C)
+    (B) edge [draw=edgecol,bend left=15, left, pos=0.2] node  [rotate=30, yshift=5, xshift=8]{$\sigma_0\vert 0.7$} (A)
+    (C) edge [draw=edgecol,bend left=45,pos=.2] node [rotate=-40, yshift=-2, xshift=2]{$\sigma_1\vert 0.4$} (A)
+    (C) edge [draw=edgecol,bend left=15, right, pos=0.9] node[rotate=-90, yshift=4, xshift=-4] {$\sigma_0\vert 0.6$} (B);
+  \end{tikzpicture}
+}
+% ##################################
+\tikzexternaldisable
+% ##################################
+\newsavebox\GoneC
+\sbox{\GoneC}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state] (A)         []           {$\mspace{-4mu}q_1$};
+    \node[state]         (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \path (A) edge   [draw=edgecol,bend left]           node {$\sigma_1\vert 0.3$} (B)
+    (A) edge [draw=edgecol,in=120,out=60,loop,above] node {$\sigma_0\vert 0.7$} (A)
+    (B) edge [draw=edgecol,in=60,out=120,loop,above] node {$\sigma_1\vert 0.1$} (B)
+    edge   [draw=edgecol,bend left]           node {$\sigma_0\vert 0.9$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+% ##################################
+\newcommand{\edgecolAB}{lightgray}
+\newcommand{\edgecolAA}{lightgray}
+\newcommand{\edgecolBA}{lightgray}
+\newcommand{\edgecolBB}{lightgray}
+\newcommand{\GoneCCOMM}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.2in,
+    thick,scale=.65]
+    \tikzstyle{every state}=[fill=\nodefillcol,draw=nodeedge,text=black,minimum size=3, text width=2,fshadow,scale=.35,font=\bf\sffamily\fontsize{24}{24}\selectfont, text=white]
+    \tikzstyle{every node}=[text=white]
+    \tikzstyle{every edge}=[font=\bf\sffamily\fontsize{9}{9}\selectfont ]
+    \node[state] (A)         []           {$\mspace{-5mu}q_1$};
+    \node[state]         (B) [right of=A] {$\mspace{-5mu}q_2$};
+    \path (A) edge   [draw=\edgecolAB,bend left]           node [text=\edgecolAB, yshift=-0.2in] {$\sigma_1\vert 0.3$} (B)
+    (A) edge [draw=\edgecolAA,in=120,out=60,loop,above] node [text=\edgecolAA, yshift=-0.2in] {$\sigma_0\vert 0.7$} (A)
+    (B) edge [draw=\edgecolBB,in=60,out=120,loop,above] node  [text=\edgecolBB, yshift=-0.2in]{$\sigma_1\vert 0.1$} (B)
+    edge   [draw=\edgecolBA,bend left]           node [text=\edgecolBA, yshift=0.2in] {$\sigma_0\vert 0.9$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+% ##################################
+\newsavebox\GoneW
+\sbox{\GoneW}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state] (A)         []           {$\mspace{-4mu}q_1$};
+    \node[state]         (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \path (A) edge   [draw=Yellow2,bend left, very thick]           node {$\sigma_1\vert 0.3$} (B)
+    (A) edge [draw=Yellow2,in=120,out=60,loop,above,very thick ] node {$\sigma_0\vert 0.7$} (A)
+    (B) edge [draw=edgecol,in=60,out=120,loop,above] node {$\sigma_1\vert 0.1$} (B)
+    edge   [draw=edgecol,bend left]           node {$\sigma_0\vert 0.9$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+% ##################################
+\newsavebox\GoneV
+\sbox{\GoneV}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state, draw=Green1, fill=Green1] (A)         []           {$\mspace{-4mu}q_1$};
+    \node[state]         (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \path (A) edge   [draw=edgecol,bend left]           node {$\sigma_1\vert 0.3$} (B)
+    (A) edge [draw=Green1,in=120,out=60,loop,above, very thick] node {$\sigma_0\vert 0.7$} (A)
+    (B) edge [draw=edgecol,in=60,out=120,loop,above] node {$\sigma_1\vert 0.1$} (B)
+    edge   [draw=edgecol,bend left]           node {$\sigma_0\vert 0.9$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+% ##################################
+\newsavebox\GoneS
+\sbox{\GoneS}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state] (A)         []           {$\mspace{-4mu}q_1$};
+    \node[state]         (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \path (A) edge   [draw=edgecol,bend left]           node {$\sigma_1\vert 0.3$} (B)
+    (A) edge [draw=edgecol,in=120,out=60,loop,above, ] node {$\sigma_0\vert 0.7$} (A)
+    (B) edge [draw=Green1,in=60,out=120,loop,above, very thick] node {$\sigma_1\vert 0.1$} (B)
+    edge   [draw=edgecol,bend left]           node {$\sigma_0\vert 0.9$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+% ##################################
+\newsavebox\GoneQ
+\sbox{\GoneQ}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state] (A)         []           {$\mspace{-4mu}q_1$};
+    \node[state, draw=Tomato, fill=Tomato]         (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \path (A) edge   [draw=Tomato,bend left, very thick]           node {$\sigma_1\vert 0.3$} (B)
+    (A) edge [draw=edgecol,in=120,out=60,loop,above] node {$\sigma_0\vert 0.7$} (A)
+    (B) edge [draw=Tomato,in=60,out=120,loop,above, very thick] node {$\sigma_1\vert 0.1$} (B)
+    edge   [draw=edgecol,bend left]           node {$\sigma_0\vert 0.9$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+\newsavebox\GoneQq
+\sbox{\GoneQq}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state, draw=Green1, fill=Green1] (A)         []           {$\mspace{-4mu}q_1$};
+    \node[state]         (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \path (A) edge   [draw=edgecol,bend left, ]           node {$\sigma_1\vert 0.3$} (B)
+    (A) edge [draw=Green1,in=120,out=60,loop,above, very thick] node {$\sigma_0\vert 0.7$} (A)
+    (B) edge [draw=edgecol,in=60,out=120,loop,above] node {$\sigma_1\vert 0.1$} (B)
+    edge   [draw=Green1,bend left, very thick]           node {$\sigma_0\vert 0.9$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+\newsavebox\GoneBB
+\sbox{\GoneBB}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state] (A)         []           {$\mspace{-4mu}q_1$};
+    \node[state, draw=yellow, fill=yellow]         (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \path (A) edge   [draw=yellow,bend left, very thick]           node {$\sigma_1\vert 0.3$} (B)
+    (A) edge [draw=edgecol,in=120,out=60,loop,above, ] node {$\sigma_0\vert 0.7$} (A)
+    (B) edge [draw=yellow,in=60,out=120,loop,above, very thick] node {$\sigma_1\vert 0.1$} (B)
+    edge   [draw=edgecol,bend left, ]           node {$\sigma_0\vert 0.9$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+\newsavebox\GoneAB
+\sbox{\GoneAB}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state] (A)         []           {$\mspace{-4mu}q_1$};
+    \node[state, draw=Tomato, fill=Tomato]         (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \path (A) edge   [draw=Tomato,bend left,very thick ]           node {$\sigma_1\vert 0.3$} (B)
+    (A) edge [draw=Tomato,in=120,out=60,loop,above, very thick ] node {$\sigma_0\vert 0.7$} (A)
+    (B) edge [draw=edgecol,in=60,out=120,loop,above, ] node {$\sigma_1\vert 0.1$} (B)
+    edge   [draw=edgecol,bend left, ]           node {$\sigma_0\vert 0.9$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+\newsavebox\GoneBA
+\sbox{\GoneBA}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state, draw=Blue1, fill=Blue1, text=white] (A)         []           {$\mspace{-4mu}q_1$};
+    \node[state]         (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \path (A) edge   [draw=edgecol,bend left,]           node {$\sigma_1\vert 0.3$} (B)
+    (A) edge [draw=edgecol,in=120,out=60,loop,above,  ] node {$\sigma_0\vert 0.7$} (A)
+    (B) edge [draw=Blue1,in=60,out=120,loop,above, very thick] node {$\sigma_1\vert 0.1$} (B)
+    edge   [draw=Blue1,bend left,very thick ]           node {$\sigma_0\vert 0.9$} (A);
+  \end{tikzpicture}
+}
+% ##################################
+\newsavebox\GtwoC
+\sbox{\GtwoC}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=.5cm,
+    semithick,scale=.34,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecol,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state] (A) at (0,0)         {$\mspace{-4mu}q_1$};
+    \node[state] at (3.3,1.9) (B)  {$\mspace{-4mu}q_2$};
+    \node[state] at (3.3,-1.9) (C)  {$\mspace{-4mu}q_3$};
+    \path (A) edge [draw=edgecol,bend left=45, pos=0.8] node [rotate=40, yshift=2]{$\sigma_1\vert 0.2$} (B)
+    (A) edge [draw=edgecol,bend left=15, below left,  pos=0.7] node [rotate=-30, yshift=1, xshift=9]{$\sigma_0\vert 0.8$} (C)
+    (B) edge [draw=edgecol,bend left=45, pos=0.1] node [rotate=-90, yshift=1, xshift=-4]{$\sigma_1\vert 0.3$} (C)
+    (B) edge [draw=edgecol,bend left=15, left, pos=0.2] node  [rotate=30, yshift=5, xshift=8]{$\sigma_0\vert 0.7$} (A)
+    (C) edge [draw=edgecol,bend left=45,pos=.2] node [rotate=-40, yshift=-2, xshift=2]{$\sigma_1\vert 0.4$} (A)
+    (C) edge [draw=edgecol,bend left=15, right, pos=0.9] node[rotate=-90, yshift=4, xshift=-4] {$\sigma_0\vert 0.6$} (B);
+  \end{tikzpicture}
+}
+% ##################################
+\newsavebox\Gsum
+\sbox{\Gsum}{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.4cm,
+    semithick,scale=.65,font=\bf\fontsize{6}{6}\selectfont]
+    \tikzstyle{every state}=[fill=nodecolb,draw=nodeedge,text=black,minimum size=3, text width=2,scale=1,fshadow]
+    \tikzstyle{every node}=[text=white]
+    \node[state] (A) []        {$\mspace{-4mu}q_1$};
+    \node[state] (B) [right of=A] {$\mspace{-4mu}q_2$};
+    \node[state] (C) [right of=B] {$\mspace{-4mu}q_3$};
+    \node[state] (D) [below of=A] {$\mspace{-4mu}q_4$};
+    \node[state] (E) [below of=B] {$\mspace{-4mu}q_5$};
+    \node[state] (F) [below of=C] {$\mspace{-4mu}q_6$};
+    \path (A) edge [draw=edgecol,bend left=15,  above right, pos=0.3] node [rotate=0,xshift=-6,yshift=-2] {$\sigma_1\vert 0.86$} (B)
+    (A) edge [draw=edgecol,bend left=15, right,  pos=0.2] node [rotate=0,xshift=-2,yshift=2]{$\sigma_0\vert 0.14$} (D)
+    (B) edge [draw=edgecol,bend right=15] node [rotate=0,xshift=0,yshift=-1.5]{$\sigma_1\vert 0.7$} (C)
+    (B) edge [draw=edgecol,bend left=15, right, pos=0.2] node [rotate=0,xshift=-2,yshift=-2]{$\sigma_0\vert 0.3$} (E)
+    (C) edge [draw=edgecol,bend right=50, above] node [rotate=0,xshift=0,yshift=-2]{$\sigma_1\vert 0.79$} (A)
+    (C) edge [draw=edgecol,bend left=15, right, pos=1] node [rotate=90,yshift=-6]{$\sigma_0\vert 0.21$} (F);
+    \path (D) edge [draw=edgecol,bend left=15, pos=0.8] node [rotate=90,yshift=-2,xshift=5] {$\sigma_1\vert 0.57$} (A)
+    (D) edge [draw=edgecol,bend right=50, above,  pos=0.5] node [rotate=0,xshift=0 ,yshift=-2] {$\sigma_0\vert 0.43$} (F)
+    (E) edge [draw=edgecol,bend right=15] node[rotate=0,xshift=0,yshift=1] {$\sigma_0\vert 0.39$} (D)
+    (E) edge [draw=edgecol,bend left=15, left, pos=0.2] node [rotate=0,xshift=2,yshift=1]{$\sigma_1\vert 0.61$} (B)
+    (F) edge [draw=edgecol,bend left=15, above] node [rotate=0,xshift=0,yshift=-1]{$\sigma_0\vert 0.63$} (E)
+    (F) edge [draw=edgecol,bend left=15, left, pos=0.25] node [rotate=0,xshift=2,yshift=1]{$\sigma_1\vert 0.37$} (C);
+  \end{tikzpicture}
+}
+% ##################################
+% ##############################
+\newsavebox\arrw
+\sbox{\arrw}{%
+  \begin{tikzpicture}[scale=0.75,thick,solid,,opacity=0.7,rotate=-90,shift={(-1in,-0.5in)}]
+    \path[fill=pur,opacity=0.95] (1,1)--(2,1.5)--(3,1)--cycle;
+    \shade[left color=white, right color=pur] (2.5,0.25)--(1.5,0.25)-- (1.5,1)--(2.5,1)--cycle;
+  \end{tikzpicture}
+}
+% ##############################
+% ############################################
+% ############################################
+% \newsavebox\syma
+% \sbox{\syma}{%
+%   % 
+% \begin{tikzpicture}[scale=.25]
+%   \begin{axis}[scale=.5,draw=none,width=7.5in, height=3.5in,     % size of the image
+%     xmin=1,xmax=100,        grid = major,
+%     grid style={dashed, gray!30}, semithick,
+%     xtick=\empty,ytick=\empty, axis x line=none,
+%     axis y line=none
+%     ]
+%     ;
+%     \input{Figures/data1.tex}
+%   \end{axis}
+% \end{tikzpicture}
+% }
+% %   ############################################
+% %   ############################################
+%   \newsavebox\symb
+%   \sbox{\symb}{%
+%   %   
+%   \begin{tikzpicture}[scale=.25]
+%     \begin{axis}[scale=.5,draw=none,width=7.5in, height=3.5in,     % size of the image
+%       xmin=1,xmax=100,        grid = major,
+%       grid style={dashed, gray!30}, semithick,
+%       xtick=\empty,ytick=\empty, axis x line=none,
+%       axis y line=none
+%       ]
+%       ;
+%       \input{Figures/data2.tex}
+%     \end{axis}
+%   \end{tikzpicture}
+% }
+% %   ############################################
+% %   ############################################
+%   \newsavebox\symw
+%   \sbox{\symw}{%
+%   %   
+%   \begin{tikzpicture}[scale=.25]
+%     \begin{axis}[scale=.5,draw=none,width=7.5in, height=3.5in,     % size of the image
+%       xmin=1,xmax=100,        grid = major,
+%       grid style={dashed, gray!30},ultra thick,
+%       xtick=\empty,ytick=\empty, axis x line=none,
+%       axis y line=none
+%       ]
+%       ;
+%       \input{Figures/data3.tex}
+%     \end{axis}
+%   \end{tikzpicture}
+% }
+% %   ############################################
+% %   ############################################
+%   \newsavebox\Tsinv
+%   \sbox{\Tsinv}{%
+%   %   
+%   \begin{tikzpicture}[very thick,scale=9] 
+%     \node at (0.05,0.05) [fill=colinv,draw,diamond, drop shadow,inner sep=0.5pt,minimum size=10pt] (n2){$\mathds{-1}$};
+%     \draw[->,>=stealth'] (-0.05,0.05) -- (0.015,0.05);
+%     \draw[->,>=stealth']  (0.085,0.05) -- (0.15,0.05);
+%   \end{tikzpicture}
+% }
+% %   ##########################################################
+% %   ##########################################################
+
+%   argument #1: any options
+\newenvironment{customlegend}[1][]{%
+  \begingroup
+  % inits/clears the lists (which might be populated from previous
+  % axes):
+  \csname pgfplots@init@cleared@structures\endcsname
+  \pgfplotsset{#1}%
+}{%
+  % draws the legend:
+  \csname pgfplots@createlegend\endcsname
+  \endgroup
+}%
+
+\def\addlegendimage{\csname pgfplots@addlegendimage\endcsname}
+
+%% --------------------------------
+
+% definition to insert numbers
+\pgfkeys{/pgfplots/number in legend/.style={%
+    /pgfplots/legend image code/.code={%
+      \node at (0.295,-0.0225){#1};
+    },%
+  },
+}
+
+
+\tikzset{
+  myarrow/.style={
+    draw,
+    fill=black,
+    single arrow,
+    minimum height=2.5ex,
+    line width=1pt,
+    single arrow head extend=0.1ex
+  }
+}
+
+\newcommand{\arrowup}{%
+  \tikz [baseline=-0.5ex]{\node [myarrow,rotate=90, single arrow head extend=2mm,inner sep=.1mm] {};}% or: single arrow head indent=⟨length⟩
+}
+\newcommand{\arrowdown}{%
+  \tikz [baseline=-1ex]{\node [myarrow,rotate=-90,  yscale=.5, single arrow head extend=1mm] {};}
+}
+
+
+
+\makeatletter
+\def\slashedarrowfill@#1#2#3#4#5{%
+  $\m@th\thickmuskip0mu\medmuskip\thickmuskip\thinmuskip\thickmuskip
+  \relax#5#1\mkern-7mu%
+  \cleaders\hbox{$#5\mkern-2mu#2\mkern-2mu$}\hfill
+  \mathclap{#3}\mathclap{#2}%
+  \cleaders\hbox{$#5\mkern-2mu#2\mkern-2mu$}\hfill
+  \mkern-7mu#4$%
+}
+
+\def\rightslashedarrowfilla@{%
+  \slashedarrowfill@\relbar\relbar{\raisebox{1.2pt}{$\scriptscriptstyle\diagup$}}\rightarrow}
+\newcommand\xslashedrightarrowa[2][]{%
+  \ext@arrow 0055{\rightslashedarrowfilla@}{#1}{#2}}
+
+\def\rightslashedarrowfillb@{%
+  \slashedarrowfill@\relbar\relbar/\rightarrow}
+\newcommand\xslashedrightarrowb[2][]{%
+  \ext@arrow 0055{\rightslashedarrowfillb@}{#1}{#2}}
+
+\def\rightslashedarrowfillc@{%
+  \slashedarrowfill@\relbar\relbar{\raisebox{.12em}{\tiny/}}\rightarrow}
+\newcommand\xslashedrightarrowc[2][]{%
+  \ext@arrow 0055{\rightslashedarrowfillc@}{#1}{#2}}
+
+\pgfdeclareshape{slash underlined}
+{
+  \inheritsavedanchors[from=rectangle] % this is nearly a circle
+  \inheritanchorborder[from=rectangle]
+  \inheritanchor[from=rectangle]{north}
+  \inheritanchor[from=rectangle]{north west}
+  \inheritanchor[from=rectangle]{north east}
+  \inheritanchor[from=rectangle]{center}
+  \inheritanchor[from=rectangle]{west}
+  \inheritanchor[from=rectangle]{east}
+  \inheritanchor[from=rectangle]{mid}
+  \inheritanchor[from=rectangle]{mid west}
+  \inheritanchor[from=rectangle]{mid east}
+  \inheritanchor[from=rectangle]{base}
+  \inheritanchor[from=rectangle]{base west}
+  \inheritanchor[from=rectangle]{base east}
+  \inheritanchor[from=rectangle]{south}
+  \inheritanchor[from=rectangle]{south west}
+  \inheritanchor[from=rectangle]{south east}
+  \inheritanchorborder[from=rectangle]
+  \foregroundpath{
+    % store lower right in xa/ya and upper right in xb/yb
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgf@xc=\pgf@xa
+    \advance\pgf@xc by .5\pgf@xb
+    \pgf@yc=\pgf@ya
+    \advance\pgf@xc by -1.3pt
+    \advance\pgf@yc by -1.8pt
+    \pgfpathmoveto{\pgfqpoint{\pgf@xc}{\pgf@yc}}
+    \advance\pgf@xc by  2.6pt
+    \advance\pgf@yc by  3.6pt
+    \pgfpathlineto{\pgfqpoint{\pgf@xc}{\pgf@yc}}
+    \pgfpathmoveto{\pgfqpoint{\pgf@xa}{\pgf@ya}}
+    \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@ya}}
+  }
+}
+\tikzset{nomorepostaction/.code=\let\tikz@postactions\pgfutil@empty}
+
+\newcommand\xslashedrightarrowd[2][]{%
+  \mathrel{\tikz[baseline=-.7ex] \path node[slash underlined,draw,->,anchor=south] {\(\scriptstyle #2\)} node[anchor=north] {\(\scriptstyle #1\)};}}
+
+\makeatother 
+
+
+% ##########################################################
+% ##########################################################
+\tikzset{srule/.style={ semithick, opacity=.8, Red1, text opacity=1, text=gray}}
+\tikzset{axstyle/.style={ black, opacity=1,  thick, rounded corners=0pt}}
+\tikzset{%
+  fshadow/.style={      preaction={
+      fill=black,opacity=.2,
+      path fading=circle with fuzzy edge 20 percent,
+      transform canvas={xshift=1mm,yshift=-1mm}
+    }}
+}
+% ##########################################################
+% ##########################################################
+\tikzset{oplus/.style={path picture={% 
+      \draw[black]
+      (path picture bounding box.south) -- (path picture bounding box.north) 
+      (path picture bounding box.west) -- (path picture bounding box.east);
+    }}} 
+% ##########################################################
+% ##########################################################
+\tikzset{%
+  highlight/.style={draw=Red4,rectangle,rounded corners=1pt, opacity=1,fill=gray!10,thick,inner sep=-1.25pt,on background layer,fill opacity=.3}
+}
+\tikzset{%
+  highlightg/.style={draw=DodgerBlue4,rectangle,rounded corners=1pt, opacity=1,fill=gray!10,thick,inner sep=-1.25pt,on background layer,fill opacity=.3}
+}
+\tikzset{%
+  wgle/.style={ ,ultra thick,,decorate, Red4!80!black,  , opacity=1,text opacity=1, thick, line width=1pt}
+}% 
+% ##################################
+\def\SCALE{1}
+\newcommand{\Goneone}[1]{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=\SCALE,font=\bf\fontsize{7}{7}\selectfont]
+    \tikzstyle{every state}=[fill=Tomato,draw=nodeedge,text=black,minimum size=3,scale=\SCALE,fshadow]
+    \tikzstyle{every edge}=[ thick]
+    % \tikzset{every loop/.style={min distance=10mm,looseness=10}} \tikzstyle{every edge}=[ thick]
+    \node[state, anchor=center] (A) []   {$q_0$};
+    \node[state, anchor=center] (B) [right of=A] {$q_1$};
+    \path (A) edge   [draw=white,bend left]           node {$\sigma_1\vert 0.15$} (B)
+    (A) edge [draw=white,in=120,out=60,loop,left] node [xshift=-0.27in,yshift=0in, pos=.2]{$\sigma_0\vert 0.85$} (A)
+    (B) edge [draw=white,in=60,out=120,loop,right] node [xshift=0.27in,yshift=0in,pos=.2]{$\sigma_1\vert 0.25$} (B)
+    edge   [draw=white,bend left]           node {$\sigma_0\vert 0.75$} (A);
+    \node [anchor=north west] at ([yshift=.2in]current bounding box.north west) {#1};
+  \end{tikzpicture}
+}
+% 
+% ##################################
+% ##################################
+\def\SCALE{1}
+\newcommand{\Gtwothree}[1]{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=\SCALE,font=\bf\fontsize{7}{7}\selectfont]
+    \tikzstyle{every state}=[fill=Green1,draw=black,text=black,minimum size=3,scale=\SCALE,fshadow]
+    \tikzstyle{every edge}=[ thick]
+    \node[state, ] (A) []  [align=left] {$q_0$};
+    \node[state, anchor=center] (B) [right of=A] {$q_1$};
+    \path (A) edge   [draw=Green1,bend left]           node {$\sigma_1$} (B)
+    (A) edge [draw=Green1,in=120,out=60,loop,above] node [xshift=.0in,yshift=.0in]{$\sigma_0$} (A)
+    (B) edge [draw=Green1,in=60,out=120,loop,above] node [xshift=.0in,yshift=0in]{$\sigma_1$} (B)
+    edge   [draw=Green1,bend left]           node {$\sigma_0$} (A);
+
+    \node [draw=greet, thick, text=black,fill=lightgray, anchor=north east, label={[label distance=.0in]-90:$\sigma_0'$}] (P) at ([yshift=-.2in, xshift=-.2in]A.south west) {$0.2$};
+    \node [draw=greet,text=black,  thick,fill=lightgray, anchor=west, label={[label distance=.0in]-90:$\sigma_1'$}] (Q) at ([xshift=-.01in]P.east) {$0.2$};
+    \node [draw=greet, text=black, thick,fill=lightgray, anchor=west, label={[label distance=.0in]-90:$\sigma_2'$}] (R) at ([xshift=-.01in]Q.east) {$0.6$};
+
+    \draw [-,wgle,very thick,, gray!80] (Q.north) -- (A) node [pos=.7,left, xshift=-.15in,align=right] {Output\\ Distribution};
+
+
+    \node [draw=greet, thick,text=black, fill=lightgray, anchor=north west, label={[label distance=.0in]-90:$\sigma_0'$}] (P1) at ([yshift=-.2in, xshift=-0.1in]B.south east) {$0.5$};
+    \node [draw=greet,  thick, text=black,fill=lightgray,anchor=west, label={[label distance=.0in]-90:$\sigma_1'$}] (Q1) at ([xshift=-.01in]P1.east) {$0.4$};
+    \node [draw=greet,  thick, text=black,fill=lightgray,anchor=west, label={[label distance=.0in]-90:$\sigma_2'$}] (R1) at ([xshift=-.01in]Q1.east) {$0.1$};
+
+    \draw [-,wgle,very thick, , gray!80] (Q1.north) -- (B);
+    \node [anchor=north west] at ([yshift=.2in]current bounding box.north west) {#1};
+
+
+  \end{tikzpicture}
+}
+% ##################################
+% ##################################
+\newcommand{\Gtwotwo}[1]{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=\SCALE,font=\bf\fontsize{7}{7}\selectfont]
+    \tikzstyle{every state}=[fill=Green1,draw=black,text=black,minimum size=3,scale=\SCALE,fshadow]
+    \tikzstyle{every edge}=[ thick]
+    \node[state, ] (A) []  [align=left] {$q_0$};
+    \node[state, anchor=center] (B) [right of=A] {$q_1$};
+    \path (A) edge   [draw=Green1,bend left]           node {$\sigma_1$} (B)
+    (A) edge [draw=Green1,in=120,out=60,loop,above] node [xshift=.0in,yshift=.0in]{$\sigma_0$} (A)
+    (B) edge [draw=Green1,in=60,out=120,loop,above] node [xshift=.0in,yshift=0in]{$\sigma_1$} (B)
+    edge   [draw=Green1,bend left]           node {$\sigma_0$} (A);
+
+    \node [draw=greet, thick, fill=lightgray,text=black, anchor=north east, label={[label distance=.0in]-90:$\sigma_0$}] (P) at ([yshift=-.2in, xshift=-.2in]A.south west) {$0.9$};
+    \node [draw=greet,  thick, fill=lightgray,text=black,anchor=west, label={[label distance=.0in]-90:$\sigma_1$}] (Q) at ([xshift=-.01in]P.east) {$0.1$};
+
+    \draw [-,wgle,very thick,gray!80] (Q.north) -- (A);
+
+
+    \node [draw=greet, thick, fill=lightgray,text=black, anchor=north west, label={[label distance=.0in]-90:$\sigma_0$}] (P1) at ([yshift=-.2in, xshift=-0in]B.south east) {$0.2$};
+    \node [draw=greet,  thick, anchor=west,text=black, fill=lightgray,label={[label distance=.0in]-90:$\sigma_1$}] (Q1) at ([xshift=-.01in]P1.east) {$0.8$};
+
+    \draw [-,wgle,very thick, gray!80] (Q1.north) -- (B) node [pos=.7,right, xshift=.15in,align=left] {Output\\ Distribution};
+
+    \node [anchor=north west] at ([yshift=.2in]current bounding box.north west) {#1};
+
+
+  \end{tikzpicture}
+}
+% ################################## 
+\newcommand{\GtwothreeXX}[1]{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=\SCALE,font=\bf\fontsize{7}{7}\selectfont]
+    \tikzstyle{every state}=[fill=Green1,draw=black,text=black,minimum size=3,scale=\SCALE,fshadow]
+    \tikzstyle{every edge}=[ thick]
+    \node[state, ] (A) []  [align=left] {$q_0$};
+    \node[state, anchor=center] (B) [right of=A] {$q_1$};
+    \path (A) edge   [draw=Green1,bend left]           node {$1$} (B)
+    (A) edge [draw=Green1,in=120,out=60,loop,above] node [xshift=.0in,yshift=.0in]{$0$} (A)
+    (B) edge [draw=Green1,in=60,out=120,loop,above] node [xshift=.0in,yshift=0in]{$1$} (B)
+    edge   [draw=Green1,bend left]           node {$0$} (A);
+
+    \node [draw=greet, thick, text=black,fill=lightgray, anchor=north east, label={[label distance=.03in]-90:$a$}] (P) at ([yshift=-.2in, xshift=-.2in]A.south west) {$0.2$};
+    \node [draw=greet,text=black,  thick,fill=lightgray, anchor=west, label={[label distance=.01in]-90:$b$}] (Q) at ([xshift=-.01in]P.east) {$0.2$};
+    \node [draw=greet, text=black, thick,fill=lightgray, anchor=west, label={[label distance=.03in]-90:$c$}] (R) at ([xshift=-.01in]Q.east) {$0.6$};
+
+    \node [draw=greet, thick,text=black, fill=lightgray, anchor=north west, label={[label distance=.03in]-90:$a$}] (P1) at ([yshift=-.2in, xshift=-0.1in]B.south east) {$0.5$};
+    \node [draw=greet,  thick, text=black,fill=lightgray,anchor=west, label={[label distance=.01in]-90:$b$}] (Q1) at ([xshift=-.01in]P1.east) {$0.4$};
+    \node [draw=greet,  thick, text=black,fill=lightgray,anchor=west, label={[label distance=.03in]-90:$c$}] (R1) at ([xshift=-.01in]Q1.east) {$0.1$};
+
+    \draw [-,wgle,very thick, , gray!80] (Q1.north) -- (B);
+    \node [anchor=north west] at ([yshift=.2in]current bounding box.north west) {#1};
+
+    \draw [-,wgle,very thick,, gray!80] (Q.north) -- (A) ;
+
+
+  \end{tikzpicture}
+}
+% ##################################
+% ##################################
+\newcommand{\Gtwotwox}[1]{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=\SCALE,font=\bf\fontsize{7}{7}\selectfont]
+    \tikzstyle{every state}=[fill=Green1,draw=black,text=black,minimum size=3,scale=\SCALE,fshadow]
+    \tikzstyle{every edge}=[ thick]
+    \node[state, ] (A) []  [align=left] {$q_0$};
+    \node[state, anchor=center] (B) [right of=A] {$q_1$};
+    \path (A) edge   [draw=Green1,bend left]           node {$\sigma_1$} (B)
+    (A) edge [draw=Green1,in=120,out=60,loop,above] node [xshift=.0in,yshift=.0in]{$\sigma_0$} (A)
+    (B) edge [draw=Green1,in=60,out=120,loop,above] node [xshift=.0in,yshift=0in]{$\sigma_1$} (B)
+    edge   [draw=Green1,bend left]           node {$\sigma_0$} (A);
+
+    \node [draw=greet, thick, fill=lightgray, anchor=north east, label={[label distance=.0in]-90:$\sigma_0$}] (P) at ([yshift=-.2in, xshift=-.2in]A.south west) {$0.85$};
+    \node [draw=greet,  thick, fill=lightgray,anchor=west, label={[label distance=.0in]-90:$\sigma_1$}] (Q) at ([xshift=-.01in]P.east) {$0.15$};
+
+    \draw [-,wgle,very thick,gray!80] (Q.north) -- (A);
+
+
+    \node [draw=greet, thick, fill=lightgray, anchor=north west,text=black, label={[label distance=.0in]-90:$\sigma_0$}] (P1) at ([yshift=-.2in, xshift=-0in]B.south east) {$0.75$};
+    \node [draw=greet,  thick, anchor=west, fill=lightgray,text=black,,label={[label distance=.0in]-90:$\sigma_1$}] (Q1) at ([xshift=-.01in]P1.east) {$0.25$};
+
+    \draw [-,wgle,very thick, gray!80] (Q1.north) -- (B) ;
+
+    \node [anchor=north west] at ([yshift=.2in]current bounding box.north west) {#1};
+
+
+  \end{tikzpicture}
+}
+% ##################################
+
+
+
+
+
+\newcommand{\ddist}[5]{
+  \begin{tikzpicture}[scale=#1]
+    \def\RCOL{#5}
+    \draw[thick, fill=\RCOL, draw=black]  (0,0) rectangle  (.5,#2);
+    \draw[thick, fill=\RCOL, draw=black]  (0.5,0) rectangle  (1,#3);
+    \draw[thick, fill=\RCOL, draw=black]  (1,0) rectangle  (1.5,#4);
+  \end{tikzpicture}
+}
+
+
+
+\newcommand{\ddistt}[5]{
+  \begin{tikzpicture}[scale=#1]
+    \def\RCOL{#4}
+    \def\RCOLT{#5}
+    \draw[thick, fill=\RCOL, draw=black]  (0,0) rectangle  (.5,#2) ;
+    \draw[thick, fill=\RCOLT, draw=black]  (0.5,0) rectangle  (1,#3) ;
+  \end{tikzpicture}
+}
+
+% \input{test.tex}
+% \END
+% ##########################################################
+% ##########################################################
+\input{tape.tex}
+
+\newif\ifblackandwhitecycle
+\gdef\patternnumber{0}
+
+\pgfkeys{/tikz/.cd,
+  zoombox paths/.style={
+    draw=orange,
+    very thick
+  },
+  black and white/.is choice,
+  black and white/.default=static,
+  black and white/static/.style={ 
+    draw=white,   
+    zoombox paths/.append style={
+      draw=white,
+      postaction={
+        draw=black,
+        loosely dashed
+      }
+    }
+  },
+  black and white/static/.code={
+    \gdef\patternnumber{1}
+  },
+  black and white/cycle/.code={
+    \blackandwhitecycletrue
+    \gdef\patternnumber{1}
+  },
+  black and white pattern/.is choice,
+  black and white pattern/0/.style={},
+  black and white pattern/1/.style={    
+    draw=white,
+    postaction={
+      draw=black,
+      dash pattern=on 2pt off 2pt
+    }
+  },
+  black and white pattern/2/.style={    
+    draw=white,
+    postaction={
+      draw=black,
+      dash pattern=on 4pt off 4pt
+    }
+  },
+  black and white pattern/3/.style={    
+    draw=white,
+    postaction={
+      draw=black,
+      dash pattern=on 4pt off 4pt on 1pt off 4pt
+    }
+  },
+  black and white pattern/4/.style={    
+    draw=white,
+    postaction={
+      draw=black,
+      dash pattern=on 4pt off 2pt on 2 pt off 2pt on 2 pt off 2pt
+    }
+  },
+  zoomboxarray inner gap/.initial=5pt,
+  zoomboxarray columns/.initial=2,
+  zoomboxarray rows/.initial=2,
+  subfigurename/.initial={},
+  figurename/.initial={zoombox},
+  zoomboxarray/.style={
+    execute at begin picture={
+      \begin{scope}[
+        spy using outlines={%
+          zoombox paths,
+          width=\imagewidth / \pgfkeysvalueof{/tikz/zoomboxarray columns} - (\pgfkeysvalueof{/tikz/zoomboxarray columns} - 1) / \pgfkeysvalueof{/tikz/zoomboxarray columns} * \pgfkeysvalueof{/tikz/zoomboxarray inner gap} -\pgflinewidth,
+          height=\imageheight / \pgfkeysvalueof{/tikz/zoomboxarray rows} - (\pgfkeysvalueof{/tikz/zoomboxarray rows} - 1) / \pgfkeysvalueof{/tikz/zoomboxarray rows} * \pgfkeysvalueof{/tikz/zoomboxarray inner gap}-\pgflinewidth,
+          magnification=3,
+          every spy on node/.style={
+            zoombox paths
+          },
+          every spy in node/.style={
+            zoombox paths
+          }
+        }
+        ]
+      },
+      execute at end picture={
+      \end{scope}
+      % \node at (image.north) [anchor=north,inner sep=0pt] {\subcaptionbox{\label{\pgfkeysvalueof{/tikz/figurename}-image}}{\phantomimage}};
+      % \node at (zoomboxes container.north) [anchor=north,inner sep=0pt] {\subcaptionbox{\label{\pgfkeysvalueof{/tikz/figurename}-zoom}}{\phantomimage}};
+      \gdef\patternnumber{0}
+    },
+    spymargin/.initial=0.5em,
+    zoomboxes xshift/.initial=1,
+    zoomboxes right/.code=\pgfkeys{/tikz/zoomboxes xshift=1},
+    zoomboxes left/.code=\pgfkeys{/tikz/zoomboxes xshift=-1},
+    zoomboxes yshift/.initial=0,
+    zoomboxes above/.code={
+      \pgfkeys{/tikz/zoomboxes yshift=1},
+      \pgfkeys{/tikz/zoomboxes xshift=0}
+    },
+    zoomboxes below/.code={
+      \pgfkeys{/tikz/zoomboxes yshift=-1},
+      \pgfkeys{/tikz/zoomboxes xshift=0}
+    },
+    caption margin/.initial=4ex,
+  },
+  adjust caption spacing/.code={},
+  image container/.style={
+    inner sep=0pt,
+    at=(image.north),
+    anchor=north,
+    adjust caption spacing
+  },
+  zoomboxes container/.style={
+    inner sep=0pt,
+    at=(image.north),
+    anchor=north,
+    name=zoomboxes container,
+    xshift=\pgfkeysvalueof{/tikz/zoomboxes xshift}*(\imagewidth+\pgfkeysvalueof{/tikz/spymargin}),
+    yshift=\pgfkeysvalueof{/tikz/zoomboxes yshift}*(\imageheight+\pgfkeysvalueof{/tikz/spymargin}+\pgfkeysvalueof{/tikz/caption margin}),
+    adjust caption spacing
+  },
+  calculate dimensions/.code={
+    \pgfpointdiff{\pgfpointanchor{image}{south west} }{\pgfpointanchor{image}{north east} }
+    \pgfgetlastxy{\imagewidth}{\imageheight}
+    \global\let\imagewidth=\imagewidth
+    \global\let\imageheight=\imageheight
+    \gdef\columncount{1}
+    \gdef\rowcount{1}
+    \gdef\zoomboxcount{1}
+  },
+  image node/.style={
+    inner sep=0pt,
+    name=image,
+    anchor=south west,
+    append after command={
+      [calculate dimensions]
+      node [image container,subfigurename=\pgfkeysvalueof{/tikz/figurename}-image] {\phantomimage}
+      node [zoomboxes container,subfigurename=\pgfkeysvalueof{/tikz/figurename}-zoom] {\phantomimage}
+    }
+  },
+  color code/.style={
+    zoombox paths/.append style={draw=#1}
+  },
+  connect zoomboxes/.style={
+    spy connection path={\draw[draw=none,zoombox paths] (tikzspyonnode) -- (tikzspyinnode);}
+  },
+  help grid code/.code={
+    \begin{scope}[
+      x={(image.south east)},
+      y={(image.north west)},
+      font=\footnotesize,
+      help lines,
+      overlay
+      ]
+      \foreach \x in {0,1,...,9} { 
+        \draw(\x/10,0) -- (\x/10,1);
+        \node [anchor=north] at (\x/10,0) {0.\x};
+      }
+      \foreach \y in {0,1,...,9} {
+        \draw(0,\y/10) -- (1,\y/10);                        \node [anchor=east] at (0,\y/10) {0.\y};
+      }
+    \end{scope}    
+  },
+  help grid/.style={
+    append after command={
+      [help grid code]
+    }
+  },
+}
+% #############################################################
+
+% ##################################
+\newcommand{\Gzeroone}[3]{%
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.2cm,
+    semithick,scale=\SCALE,font=\bf\fontsize{8}{8}\selectfont]
+    \tikzstyle{every state}=[fill=nodecolW,draw=lightgray,text=black,minimum size=3,scale=\SCALE,fshadow]
+    \tikzstyle{every edge}=[ thick]
+    \node[state, ] (A) []  [align=left] {$q_0$};
+    \path (A)  edge [draw=edgecol,in=0,out=60,loop,above] node [xshift=.0in,yshift=.01in]{$1$} (A)
+    (A)  edge [draw=edgecol,in=180,out=120,loop,above] node [xshift=.0in,yshift=.01in]{$0$} (A);
+    \node [draw=greet, thick, text=black,fill=lightgray, anchor=north east, label={[label distance=.0in]-90:$0$}] (P) at ([yshift=-.2in, xshift=-.2in]A.south west) {#1};
+    \node [draw=greet,  thick, fill=lightgray,anchor=west,text=black, label={[label distance=.0in]-90:$1$}] (Q) at ([xshift=-.01in]P.east) {#2};
+    \node [draw=greet,  thick, fill=lightgray,anchor=west,text=black, label={[label distance=.0in]-90:$2$}] (R) at ([xshift=-.01in]Q.east) {#3};
+
+    \draw [-,wgle,very thick,gray!80] (Q.north) -- (A);
+  \end{tikzpicture}
+} 
+% ##################################
+% ##################################
+
+\newcommand{\paperalgo}{
+\tikz{\node[font=\sffamily\small, draw=none, text=Tomato]{\mnp{4.75in}{
+I. Chattopadhyay and H. Lipson, \textit{{\color{white} Abductive learning of quantized stochastic processes} \color{Tomato} with probabilistic finite automata.}\color{Tomato}, Phil. Trans. of The Royal Soc. A, Vol. 371(1984), 2013, pp 20110543.}
+};}}
+
+\newcommand{\paperxalgo}{
+\tikz{\node[font=\sffamily\small, draw=none, text=Tomato]{\mnp{4.75in}{
+I. Chattopadhyay , \textit{{\color{white} Causality Networks}},\color{Tomato} http://arxiv.org/abs/1406.6651}
+};}}
+
+\newcommand{\papersmash}{
+\tikz{\node[font=\sffamily\small, draw=none, text=Tomato]{\mnp{4.75in}{
+I. Chattopadhyay and H. Lipson , \textit{{\color{white} Data Smashing}: \color{Tomato} Uncovering Lurking Order In Data}, \color{Tomato}Royal Society Interface, 11: 20140826}
+};}}
+
+
+% ##################################
+\newcommand{\Globe}[1]{%
+\def\SCALE{#1}%
+\begin{tikzpicture}[scale=\SCALE,font=\bf\sffamily\fontsize{6}{6}\selectfont]
+\tikzset{%
+drwA/.style={->, Green2, opacity=.95,   line width=1.5pt, >=latex}
+}
+\node[scale=\SCALE] (A) {\includegraphics[width=3in]{Figures/Earth11}};
+%
+\coordinate (Z) at (A.center);
+\coordinate (Z1) at ([xshift=-1.05in,yshift=.8in]Z);
+\coordinate (Z2) at ([xshift=-1.15in,yshift=1.75in]Z);
+\coordinate (Z0) at ([yshift=-.45in,xshift=-.7in]Z);
+\coordinate (Z3) at ([yshift=.25in,xshift=-.15in]Z);
+\coordinate (Z4) at ([xshift=1.3in,yshift=.8in]Z);
+\coordinate (Z4u) at ([xshift=.95in,yshift=.3in]Z);
+\coordinate (Z5) at ([yshift=-1.3in,xshift=.65in]Z);
+%
+\draw[drwA] (Z0) to[out=220,in=190,looseness=5] (Z3);
+%
+\path[drwA]
+    ([xshift=-.05in,yshift=-.05in]Z4) edge [drwA, in=180, out=130,-] (Z4u)
+    (Z4u) edge [drwA, in=270, out=0] ([xshift=-.05in,yshift=-.05in]Z4);
+%
+%
+\draw[drwA] ([yshift=-1.3in,xshift=.65in]Z) to[out=280,in=20,looseness=2] ([xshift=1.3in,yshift=.8in]Z);
+%
+\draw[drwA] ([yshift=.3in,xshift=-.15in]Z) to[out=40,in=100,looseness=2] ([xshift=1.3in,yshift=.8in]Z);
+%
+\draw[drwA] ([yshift=-1.25in,xshift=.65in]Z) to[out=40,in=270,looseness=2] ([yshift=.25in,xshift=-.15in]Z);
+\node [text=\LCOL,font=\fontsize{7}{7}\selectfont] at ([xshift=.2in,yshift=.3in]Z4) {D};
+\node [text=\LCOL,font=\fontsize{7}{7}\selectfont] at ([xshift=.2in,yshift=-.2in]Z3) {A};
+\node [text=\LCOL,font=\fontsize{7}{7}\selectfont] at ([xshift=.3in,yshift=0in]Z0) {C};
+\node [text=\LCOL,font=\fontsize{7}{7}\selectfont] at ([xshift=-.1in,yshift=-.2in]Z5) {B};
+\end{tikzpicture}
+}
+% ##################################
+%\newcommand{\sld}[2]{\begin{frame}\logotitle{#1}{#2} }
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\def\ITM{{\LARGE $\circ$}~}
+\def\SPC{\vskip .5em}
+
+
+\newcommand{\hlt}[1]{\textbf{\color{Tomato}#1}}
+
+\begin{document}
+\usenavigationsymbolstemplate{} % Remove Navigation Symbols
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \vskip0pt%
+}
+% #############################################################
+
+\def\TEXTCOL{gray}
+
+\input{coursetitle.tex}
+
+
+\bf\sffamily\fontsize{10}{12}\selectfont
+
+\color{lightgray}
+\begin{frame}
+  \logotitle{Today}{}
+
+  \begin{itemize}\bf\sffamily \color{white}
+    \ITEM Bayesian Statistics (Summarize)
+    \ITEM Implementation Examples
+    \ITEM Introduction To Advanced Classifiers
+  \end{itemize}
+
+\end{frame}
+\input{course_classification}
+
+%\input{probability}
+
+% ##########################################################
+\end{document}
+
+
