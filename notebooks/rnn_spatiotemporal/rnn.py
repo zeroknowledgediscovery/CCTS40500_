@@ -55,7 +55,7 @@ def getData(meta, X_raw, tgt, future):
 	return X_train, Y_train, X_test, Y_test
 
 
-def train(X_train, Y_train, *, epochs=200):
+def train(X_train, Y_train, epochs=200):
 
 	model = tf.keras.Sequential()
 
@@ -64,7 +64,7 @@ def train(X_train, Y_train, *, epochs=200):
 	# model.add(tf.keras.Input(X_train.shape[1:]))  
 
 	# Two LSTM layers
-	model.add(LSTM(units=100, input_shape=(None, X_train.shape[-1]), return_sequences=True))
+	model.add(LSTM(units=30, input_shape=(None, X_train.shape[-1]), return_sequences=True))
 	model.add(LSTM(units=10, return_sequences=True))
 	
 	# One output layers
@@ -79,7 +79,7 @@ def train(X_train, Y_train, *, epochs=200):
 	return model
 
 
-def train_3(X_train, Y_train, *, epochs=200):
+def train_3(X_train, Y_train, epochs=200):
 
 	model = tf.keras.Sequential()
 
@@ -88,8 +88,8 @@ def train_3(X_train, Y_train, *, epochs=200):
 	# model.add(tf.keras.Input(X_train.shape[1:]))  
 
 	# Two LSTM layers
-	model.add(LSTM(units=500, input_shape=(None, X_train.shape[-1]), return_sequences=True))
-	model.add(LSTM(units=100, return_sequences=True))
+	model.add(LSTM(units=50, input_shape=(None, X_train.shape[-1]), return_sequences=True))
+	model.add(LSTM(units=10, return_sequences=True))
 	model.add(LSTM(units=10, return_sequences=True))
 	
 	# One output layers
