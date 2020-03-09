@@ -1,0 +1,1 @@
+./qNet.py --file ../covid.csv --filex ../covid.csv --varimp True --response P2949 P690 P1563 --imp 0.1
